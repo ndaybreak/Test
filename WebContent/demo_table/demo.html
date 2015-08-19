@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table Demo</title>
+<link href="../css/icomoon.min.css" rel="stylesheet" >
+<link href="../css/hpfont.css" rel="stylesheet" />
+
+<style>
+/* thead tr:first-child th{
+ 	border-top: .1em solid grey;
+ }
+ th,td{
+ 	border-left: .1em solid grey;
+ 	border-bottom: .1em solid grey;
+ }
+ tr th:last-child, tr td:last-child, .lastCol{
+ 	border-right: .1em solid grey;
+ } */
+ 
+/*  .lastCol{
+ 	border-right: .1em solid grey;
+ } */
+ button.selected{
+ 	background-color: blue;
+  	color: white;
+ }
+ th.hide, td.hide{
+ 	display:none;
+ }
+ th.showCol, td.showCol{
+ 	display: table-cell;;
+ } 
+ 
+ .dataGrid th {
+ 	padding: 12px 2px;
+ 	border-bottom: 1px solid #ffffff;
+ }
+ #container .btn{
+ 	padding: 3px 4px;
+ 	font-size: 14px;
+ }
+ div.buttonsDiv{
+   margin: 7px 0;
+ }
+ #container a.btn.btn-Secondary {
+  background: #C7C7C7;
+ }
+ #container .btn-Primary {
+  background: #767676;
+ }
+ table.dataGrid   th{
+   color:red;
+ }
+</style>
+<link href="../css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="../lib/jquery-1.11.2.js"></script>
+<!-- <script type="text/javascript" src="demo.js"></script> -->
+<script>
+	$(function(){
+		var aTitle = ['Jan 2015','Feb 2015','Mar 2015','Apr 2015','May 2015','Jun 2015','Jul 2015','Aug 2015','Sep 2015','Oct 2015','Nov 2015','Dec 2015'];
+		var oTemp = {name:'Total Count'};
+		for(var i = 0; i < 12; i++){
+			oTemp[i] = {mean:(i + 1) * 2, medium:(i + 1) * 3};
+		}
+		var aTemp = [];
+		aTemp.push(oTemp);
+		aTemp.push(oTemp);
+		aTemp.push(oTemp);
+		aTemp.push(oTemp);
+		// ===========Title One=======
+		var sTitleOne,
+			sTitleTwo;
+		sTitleOne = '<tr class="GridHeaderRow"><th class="center showCol" rowspan="2">Total</th>';
+		for(var i = 0, len = aTitle.length; i < len; i++){
+			sTitleOne += '<th class="center hide" colspan="2">' + aTitle[i] + '</th>';
+		}
+		sTitleOne += '</tr>';
+		//=================Title Two=======
+		sTitleTwo = '<tr class="GridHeaderRow">';
+		for(var i = 0; i < len; i++){
+			sTitleTwo += '<th class="center hide">Mean</th><th class="center hide">Medium</th>';
+		}
+		sTitleTwo += '</tr>';
+		//=================Content=================
+		var sContent = '';
+		var tempObj;
+		for(var i = 0,len = aTemp.length; i < len; i++){
+			tempObj = aTemp[i];
+			if(i % 2 === 0){
+				sContent += '<tr class="odd">';
+			}else{
+				sContent += '<tr class="even">';
+			}
+			sContent += '<td class="center showCol">' + tempObj.name + '</td>';
+			for(var j = 0; j < 12; j++){
+				sContent += '<td class="center hide">' + tempObj[j].mean + '</td><td class="center hide">' + tempObj[j].medium + '</td>';
+			}
+			sContent += '</tr>';
+		}
+		
+		var $container = $('#container');
+		$container.find('thead').html(sTitleOne + sTitleTwo);
+		$container.find('tbody').html(sContent);
+		
+		//================Buttons=====================
+		var sButtons = '';
+		for(var i = 0, len = aTitle.length; i < len; i++){
+			sButtons += '<a class="btn btn-Secondary" month="' + Number(i + 1) + '">' + aTitle[i] + '</a>';
+		}
+		sButtons += '<a class="all btn btn-Secondary">All</a>';
+		$container.find('div.buttonsDiv')
+				  .html(sButtons)
+				  .on('click', function(e){
+					   var target = $(e.target),
+						   month = target.attr('month');
+					   if(target.hasClass('all')){
+						   if(target.hasClass('btn-Primary')){
+							   target.removeClass('btn-Primary').addClass('btn-Secondary');
+							   target.siblings().removeClass('btn-Primary').addClass('btn-Secondary');
+							   $('table tr', $container).children().addClass('hide');
+						   }else{
+							   target.removeClass('btn-Secondary').addClass('btn-Primary');
+							   target.siblings().removeClass('btn-Secondary').addClass('btn-Primary');
+							   $('table tr', $container).children('.hide').removeClass('hide');
+						   }
+						   fnAddLineForLastCol();
+						   return;
+					   }
+					   if(target.hasClass('btn-Primary')){
+						   target.removeClass('btn-Primary').addClass('btn-Secondary');
+					   }else if(target.hasClass('btn-Secondary')){
+						   target.removeClass('btn-Secondary').addClass('btn-Primary');
+					   }
+					   //target.toggleClass('selected');
+					   $('thead tr:first th', $container).eq(month).toggleClass('hide');
+					   
+					   $('thead tr:last th', $container).eq((month-1) * 2).toggleClass('hide');
+					   $('thead tr:last th', $container).eq((month-1) * 2 + 1).toggleClass('hide');
+					   
+					   $('tbody tr', $container).each(function(){
+						  $(this).find('td').eq(month * 2 -1).toggleClass('hide'); 
+					   });
+					   $('tbody tr', $container).each(function(){
+						  $(this).find('td').eq(month * 2).toggleClass('hide'); 
+					   });
+					   fnAddLineForLastCol();
+					});
+		
+		$container.find('div.buttonsDiv a').slice(-4,-1).click();
+		
+		
+		function fnAddLineForLastCol() {
+			var oldLastCols = $('.lastCol', $container).removeClass('lastCol');
+			var month = $container.find('a[month].btn-Primary').last().attr('month');
+			if(typeof month === 'undefined'){
+				month = 0;
+			}
+			
+			$('thead tr:first th', $container).eq(month).addClass('lastCol');
+			$('thead tr:last th', $container).eq((month - 1) * 2 + 1).addClass('lastCol');
+			$('tbody tr', $container).each(function() {
+				$(this).find('td').eq(month * 2).addClass('lastCol');
+			});
+		}
+
+	});
+</script>
+</head>
+<body>
+	<div id="container">
+		<div class="buttonsDiv"></div>
+		<table id="myTableId" class="dataGrid">
+			<thead></thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	
+	<input type="text" id="test"/>
+</body>
+</html>

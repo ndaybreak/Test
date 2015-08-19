@@ -1,0 +1,157 @@
+<html>
+<head>
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="../css/register.css">
+    <script src="http://staydan.com/libs/vendor/jquery.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			$(document).on('click','#submit',function(){
+				var reqObj={},
+					idVal;
+				/* reqObj.display_name = $('.nameBox').val(); */
+				idVal = $('.idBox').val();
+ 				reqObj.employee_id = idVal == ''? '':parseInt(idVal);
+ 				reqObj.mail = $('.mailBox').val();
+ 				reqObj.location = parseInt($('.locationSelect').val());
+ 				/* reqObj.business_unit = parseInt($('.buSelect').val()); */
+ 				reqObj.launch_time = parseInt($('.timeSelect').val());
+ 				/* reqObj.notes = $('.noteBox').val(); */
+ 				reqObj.event_id = 1;
+ 				/* console.log(reqObj); */
+ 				console.log(JSON.stringify(reqObj));
+ 				var _url = 'http://www.staydan.com/work/qrRegister/api/index.php/registerUser';
+				$.ajax({
+					url:_url,
+		            type:'Post',
+		            data:JSON.stringify(reqObj),
+		            dataType:'json',
+		            cache:false,
+					success : function(obj) {
+					    var state = obj.result;
+					    if("Success" == state){
+					    	$('#responseBox').html('<span class="result">Congratulations !</span></br> ' + obj.displayName + ',you have registered successful.');
+					    	$('#responseBox').addClass('success');
+					    }else{
+					    	var errorMsg = obj.errorMsg;
+					    	$('#responseBox').html('<span class="result">Sorroy!</span></br>' + errorMsg);
+					    	$('#responseBox').addClass('failed');
+					    }
+					},
+					error: function(){
+						 $('#responseBox').html('<span class="result">Congratulations !</span></br> Tom,you have registered successful.');
+				    	$('#responseBox').addClass('success'); 
+				    	/*$('#responseBox').html('<span class="result">Sorroy!</span></br>' + 'EID can not empty');
+				    	$('#responseBox').addClass('failed');*/
+					},
+					beforeSend : function() {
+						$('#submit').hide();
+						$('#loading').show();
+						$('#responseBox').html('');
+						$('#responseBox').removeClass();
+					},
+					complete : function() {
+						$('#submit').show();
+						$('#loading').hide();
+					}
+				});	
+			});
+			$(document).on('click','#join',function(){
+				 if(window.screen.width < 767){
+					 $('div.welcome').hide();
+				 }else{
+					 $('#background').show();
+				 }
+				 $('#responseBox').html('');
+				 $('#mainBody').show(); 
+			});
+			$(document).on('click','#mainBody',function(e){
+				 if('none' == $('div.welcome').css('display'))
+					 return;
+				 var container = $('div.content');
+		         if (!container.is(e.target) // if the target of the click isn't the container...
+		               && container.has(e.target).length === 0){ // ... nor a descendant of the container
+		        	 $(this).hide();
+					 $('#background').hide();
+		         }
+			});
+		});
+    </script>
+</head>
+<body>
+<div class="welcome">
+	<div class="imgDiv">
+		<img src="../css/images/T&O_logo.png"></img>
+	</div>
+	<div class="welBody">
+		<div class="div0">
+			<p class="title">
+				FY14 Q4 Shanghai T&O Employee Appreciation Week
+			</p>
+			<p class="title">
+				Mgr Lunch on 17th Oct
+			</p>
+			<p>
+				Manager will be 
+				<!-- <span class="flexibleFont"> -->your chef, your waiter, your waitress<!-- </span> -->
+			</p>
+			<p>
+				Shanghai T&O Managers will cook food and serve lunch meal for you in HP VIA Campus Cafeteria. 
+				<span class="redFont">It is the managers’ way of expressing thanks to employees who stood with the company in a challenging year and stayed focused on achieving aggressive plans during FY14.</span> 
+			</p>
+		</div>
+		<div class="div01">
+			<div class="div1">
+				<p>
+					600 opportunities are now open for you !		
+				</p>
+				<div class="welButDiv">
+					<img id="join" src="../css/images/T&O_button.png"></img>
+				</div>
+			</div>
+			<div class="div2">
+				<img src="../css/images/T&O_chef.png"></img>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="background"></div>
+<div id="mainBody">
+	<div class="content">
+		<div>
+			<ul>
+				<li class="ele45"><span>EID *</span></li>
+				<li class="ele100"><input class="idBox ele90" type="text"/></li>
+				<li class="ele100"><span>Email Address *</span></li>
+				<li class="ele100"><input class="mailBox ele90" type="text"/></li>
+				<li class="ele100"><span class="ele100">Your Current Work Location</span></li>
+				<li class="ele100">
+					<select class="locationSelect ele90">
+						<option value="0">HP VIA Office</option>
+						<option value="1">HP Sunplus Office</option>
+						<option value="2">HP Jin Qiao Office</option>
+						<option value="3">Building B No. 2727 Jin Ke Road HP Site</option>
+					</select>
+				</li>
+				<li class="ele100"><span>Your Preferred Lunch Time</span></li>
+				<li class="ele100">
+					<select class="timeSelect ele90">
+						<option value="0">11:00am-11:30am</option>
+						<option value="1">11:30am-12:00pm</option>
+						<option value="2">12:00pm-12:30pm</option>
+						<option value="3">12:30pm-1:00pm</option>
+						<option value="4">1:00pm-1:30pm</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+		<div class="submitDiv">
+			<img id="submit" src="../css/images/submit.png"></img>
+			<img id="loading" src="../css/images/submit.png"></img>
+		</div>
+		<div id="responseBox"></div>
+	</div>
+</div>
+</body>
+</html>

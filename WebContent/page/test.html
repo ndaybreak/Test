@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript" src="../lib/jquery-1.11.2.js"></script>
+<script type="text/javascript">
+	function fnA(name){
+		console.log(name);
+	}
+	
+	function fnB(){
+		fnA.call(this, arguments);
+	}
+	
+	fnB(1,2,3);
+</script>
+</head>
+<body>
+	<div style="background:red; overflow:hidden">
+		
+		<button style="float:right;">ddddd</button>
+	</div>
+</body>
+</html>

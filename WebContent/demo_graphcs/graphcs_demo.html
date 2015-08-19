@@ -1,0 +1,133 @@
+<html lang='en'>
+<head>
+   
+
+    <title>Metrics Graphics - Demo</title>
+	<style>
+		.active{
+			background: rgb(40, 40, 240);
+  			color: white;
+		}
+	</style>
+	<link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='css/metricsgraphics.css' rel='stylesheet' type='text/css'>
+    <script src='lib/jquery-1.11.2.js'></script>
+    <script src='lib/d3.min.js' charset='utf-8'></script>
+
+    <!-- dev start -->
+   <script src='lib/metricsgraphics.js'></script>
+  
+
+
+</head>
+
+<body>
+	<div style="width:60%" class="btsDiv"></div>
+	<div style="width:53%;text-align: right;"><button class="valueBt medianBt active">Median</button><button class="valueBt meanBt">Mean</button></div>
+	<div class='col-lg-7 text-center' id='fake_users2' style="margin-top: 50px;"></div>
+	
+	<!-- <div  id='downloads' ></div> -->
+	<script>
+		var MEDIAN_VALUE = 'median',
+			MEAN_VALUE = 'mean';
+		var modules,
+			oraginalData, 
+			item,
+			graphcsArg,
+			sBts,
+			activeValueType;
+		//default value
+		modules = ['getGuidance','pricing','dddddd'];
+		oraginalData = [];
+		for (var i = 0, len = modules.length; i < len; i++) {
+			item = [];
+			if(i === 0){
+				for (var j = 0; j < 12; j++) {
+					item.push({
+						date : '2014-' + (j + 1),
+						median : (j + 1)*( j + 10) + 2*(j+3) - (i + 2),
+						mean : (i + 6) * (j + 1) * (j + 5) - 2
+					});
+				}
+			}else{
+				for (var j = 0; j < 12; j++) {
+					item.push({
+						date : '2014-' + (j + 1),
+						median : ( j + 10) *(i * 8) + 4 * (j + 2),
+						mean : (i * 12) * (j + 4) + (j * 5) + 4 * (j + 2)
+					});
+				}
+			}
+			oraginalData.push(item);
+		}
+
+		for (var i = 0; i < oraginalData.length; i++) {
+			oraginalData[i] = MG.convert.date(oraginalData[i], 'date', '%Y-%m');
+		}
+		activeValueType = MEDIAN_VALUE;
+		graphcsArg = {
+				title : "Title One",
+				width : 600,
+				height : 200,
+				right : 80,
+				area: false,
+				//xax_count: 7, 
+				target : '#fake_users2',
+				x_accessor : 'date'
+		};
+		sBts = '';
+		//--------------------
+		for(var i = 0, len = modules.length; i < len; i++){
+			sBts += '<button moduleId="' + i + '">' + modules[i] + '</button>';
+		}
+		$('div.btsDiv').html(sBts)
+					   .on('click',function(e){
+						   var target = $(e.target);
+						   if(typeof target.attr('moduleId') !== 'undefined'){
+							   target.toggleClass('active');
+							   redrawGraphcs();
+						   }
+					   });
+		$('div.btsDiv').children().eq(0).click();
+		
+		$(document).on('click','.valueBt',function(){
+			var $this = $(this);
+			$this.addClass('active');
+			$this.siblings().removeClass('active');
+			if($this.hasClass('medianBt')){
+				activeValueType = MEDIAN_VALUE;
+			}else{
+				activeValueType = MEAN_VALUE;
+			}
+			redrawGraphcs();
+		});
+		
+		function redrawGraphcs(){
+			var activeModules = [],
+				bts = $('div.btsDiv').children();
+			bts.each(function(index,ele){
+				$ele = $(ele);
+				if($ele.hasClass('active')){
+					activeModules.push($ele.attr('moduleId'));
+				}
+			});
+			if(0 === activeModules.length){
+				$('#fake_users2').html('No Data');
+				return;
+			}
+			$('#fake_users2').html('');
+			
+			var data = graphcsArg.data = [],
+				legend = graphcsArg.legend = [];
+			
+			for(var i = 0, len = activeModules.length; i < len; i++){
+				data.push(oraginalData[activeModules[i]]);
+				legend.push(modules[activeModules[i]]);
+			}
+			graphcsArg.y_accessor = activeValueType;
+			MG.data_graphic(graphcsArg);
+		}
+		
+	</script>
+</body>
+</html>

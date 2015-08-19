@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table Demo</title>
+<link href="../css/icomoon.min.css" rel="stylesheet" >
+<link href="../css/hpfont.css" rel="stylesheet" />
+<link href="../css/style.css" rel="stylesheet" />
+<style>
+/* thead tr:first-child th{
+ 	border-top: .1em solid grey;
+ }
+ th,td{
+ 	border-left: .1em solid grey;
+ 	border-bottom: .1em solid grey;
+ }
+ tr th:last-child, tr td:last-child, .lastCol{
+ 	border-right: .1em solid grey;
+ } */
+ 
+/*  .lastCol{
+ 	border-right: .1em solid grey;
+ } */
+ button.selected{
+ 	background-color: blue;
+  	color: white;
+ }
+ th.hide, td.hide{
+ 	display:none;
+ }
+ th.showCol, td.showCol{
+ 	display: table-cell;;
+ } 
+ td,th{
+ 	
+ }
+ .dataGrid th {
+ 	padding: 12px 2px;
+ 	border-bottom: 1px solid #ffffff;
+ }
+ #container .btn{
+ 	padding: 3px 4px;
+ 	font-size: 14px;
+ }
+ div.buttonsDiv{
+   margin: 7px 0;
+ }
+ #container a.btn.btn-Secondary {
+  background: #C7C7C7;
+ }
+ #container .btn-Primary {
+  background: #767676;
+ }
+</style>
+<script type="text/javascript" src="../lib/jquery-1.11.2.js"></script>
+<!-- <script type="text/javascript" src="demo.js"></script> -->
+<script>
+	
+
+</script>
+</head>
+<body>
+	<div id="container">
+		<div class="buttonsDiv"></div>
+		<div style="overflow-x: auto;width: 800px;">
+			<table>
+				<thead>
+					<tr class="GridHeaderRow"><th class="center showCol" rowspan="2">Total</th></tr>
+				<tbody>
+					<tr class="odd"><td class="center showCol" style="white-space: nowrap;">Total Count</td></tr>
+					<tr class="odd"><td class="center showCol" style="white-space: nowrap;">Total Count</td></tr>
+					<tr class="odd"><td class="center showCol" style="white-space: nowrap;">Total Count</td></tr>
+					<tr class="odd"><td class="center showCol" style="white-space: nowrap;">Total Count</td></tr>
+				</tbody>
+			</table>
+			<table id="myTableId" class="dataGrid">
+				<thead>
+					<tr class="GridHeaderRow"><th class="center" colspan="2">Jan 2015</th><th class="center" colspan="2">Feb 2015</th><th class="center" colspan="2">Mar 2015</th><th class="center" colspan="2">Apr 2015</th><th class="center" colspan="2">May 2015</th><th class="center" colspan="2">Jun 2015</th><th class="center" colspan="2">Jul 2015</th><th class="center" colspan="2">Aug 2015</th><th class="center" colspan="2">Sep 2015</th><th class="center" colspan="2">Oct 2015</th><th class="center" colspan="2">Nov 2015</th><th class="center lastCol" colspan="2">Dec 2015</th></tr><tr class="GridHeaderRow"><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center">Medium</th><th class="center">Mean</th><th class="center lastCol">Medium</th></tr></thead>
+				<tbody>
+					<tr class="odd"><td class="center">2</td><td class="center">3</td><td class="center">4</td><td class="center">6</td><td class="center">6</td><td class="center">9</td><td class="center">8</td><td class="center">12</td><td class="center">10</td><td class="center">15</td><td class="center">12</td><td class="center">18</td><td class="center">14</td><td class="center">21</td><td class="center">16</td><td class="center">24</td><td class="center">18</td><td class="center">27</td><td class="center">20</td><td class="center">30</td><td class="center">22</td><td class="center">33</td><td class="center">24</td><td class="center lastCol">36</td></tr><tr class="even"><td class="center">2</td><td class="center">3</td><td class="center">4</td><td class="center">6</td><td class="center">6</td><td class="center">9</td><td class="center">8</td><td class="center">12</td><td class="center">10</td><td class="center">15</td><td class="center">12</td><td class="center">18</td><td class="center">14</td><td class="center">21</td><td class="center">16</td><td class="center">24</td><td class="center">18</td><td class="center">27</td><td class="center">20</td><td class="center">30</td><td class="center">22</td><td class="center">33</td><td class="center">24</td><td class="center lastCol">36</td></tr><tr class="odd"><td class="center">2</td><td class="center">3</td><td class="center">4</td><td class="center">6</td><td class="center">6</td><td class="center">9</td><td class="center">8</td><td class="center">12</td><td class="center">10</td><td class="center">15</td><td class="center">12</td><td class="center">18</td><td class="center">14</td><td class="center">21</td><td class="center">16</td><td class="center">24</td><td class="center">18</td><td class="center">27</td><td class="center">20</td><td class="center">30</td><td class="center">22</td><td class="center">33</td><td class="center">24</td><td class="center lastCol">36</td></tr><tr class="even"><td class="center">2</td><td class="center">3</td><td class="center">4</td><td class="center">6</td><td class="center">6</td><td class="center">9</td><td class="center">8</td><td class="center">12</td><td class="center">10</td><td class="center">15</td><td class="center">12</td><td class="center">18</td><td class="center">14</td><td class="center">21</td><td class="center">16</td><td class="center">24</td><td class="center">18</td><td class="center">27</td><td class="center">20</td><td class="center">30</td><td class="center">22</td><td class="center">33</td><td class="center">24</td><td class="center lastCol">36</td></tr></tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

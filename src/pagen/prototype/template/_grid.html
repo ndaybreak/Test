@@ -1,0 +1,42 @@
+<div class="breadCrumbs_Div">
+	<ul class="breadcrumbs2">
+		<li style="margin-left:1px;" class="last-child">
+			<span class="carat">>&nbsp;</span><%= xc.title %></li>
+	</ul>
+</div>
+<% if xc.scroll_flag %>
+<section class="container left minWidth1800" style="width:100%;">
+<% else %>
+<section class="container left" style="width:100%;">
+<% end %>
+	<div>
+		<table id="search_result" class="TableBackground search_result dataTables_wrapper"
+			pa-table="columnDefs" table-data="<%= xc.table_data %>" data-field="<%= xc.data_field %>" data-key="<%= xc.data_key %>">
+			<thead>
+				<tr class="TableHeaderRow">
+					<th class="center"><input type="checkbox" name="checkAllEdit"
+						id="checkAllEdit" title="Check All" /></th>
+<% xc.columns.each do |c| %>
+          <th><%= c.column_name %></th>
+<% end %>
+				</tr>
+			</thead>
+		</table>
+		<div class="editable-button-box">
+<% if xc.entity_name == 'OptPriceQualityBand' %>
+			<a class="btn btn-Primary {{btn}}" ng-click="btn || addOrEdit()"><i class="icon-edit"></i>Add/Edit</a>
+<% elsif xc.entity_name == 'OptDefaultRevenueBucket' %>
+			<a class="btn btn-Primary {{btn}}" ng-click="save()"><i class="icon-pencil icon-white"></i>Save</a>
+<% else %>
+			<a class="btn btn-Primary btn-add {{btn}}" ng-click="add()"><i class="icon-plus"></i>Add New Record</a>
+<% if xc.entity_name == 'OptUser' %>
+			<a class="btn btn-Primary btn-delete {{btn}}" ng-click="del();"><i class="icon-trash"></i>Inactive</a>
+<% else %>
+			<a class="btn btn-Primary btn-delete {{btn}}" ng-click="del();"><i class="icon-trash"></i>Delete</a>
+<% end %>
+			<a class="btn btn-Primary {{btn}}" ng-click="update()"><i class="icon-pencil icon-white"></i>Edit</a>
+<% end %>
+		</div>
+		<a class="btn btn-Primary btn-export" ng-class="{'ui-state-disabled': data.length==0}" ng-click="data.length!=0 && exportAsExcel()"><i class="icon-download icon-white"></i>Export</a>
+	</div>
+</section>

@@ -1,0 +1,58 @@
+# ---------------------------
+# 1. system
+# ---------------------------
+echo 'export http_proxy=http://web-proxy.cup.hp.com:8080'  >  ~/.hpproxy
+echo 'export https_proxy=http://web-proxy.cup.hp.com:8080' >> ~/.hpproxy
+echo 'export HTTP_PROXY=http://web-proxy.cup.hp.com:8080'  >> ~/.hpproxy
+echo 'export HTTPS_PROXY=http://web-proxy.cup.hp.com:8080' >> ~/.hpproxy
+echo 'export no_proxy=localhost,127.0.0.1,192.168.66.99'   >> ~/.hpproxy
+echo 'export NO_PROXY=localhost,127.0.0.1,192.168.66.99'   >> ~/.hpproxy
+
+. .hpproxy
+
+sudo -E apt-get update
+sudo -E apt-get -y upgrade
+
+sudo -E apt-get install -y \
+        git-core zlib1g-dev curl \
+        build-essential libmysqld-dev \
+        libssl-dev inotify-tools
+
+
+
+# ---------------------------
+# 2. ruby
+# ---------------------------
+cd
+git clone http://github.com/sstephenson/rbenv.git .rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+git clone http://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+. .bashrc
+
+# rbenv install 1.9.3-p547
+# rbenv global  1.9.3-p547
+
+rbenv install 2.1.2
+rbenv global  2.1.2
+
+
+# ---------------------------
+# 3. gems
+# ---------------------------
+gem install net-ssh       #
+gem install net-scp       #
+# gem install rb-inotify  #
+gem install guard         # fs watcher
+gem install slim          # template engine
+
+gem install net-ssh net-scp guard slim 
+
+
+# ---------------------------
+# 99. compact for export
+# ---------------------------
+sudo dd if=/dev/zero of=/EMPTY bs=1M
+sudo rm -f /EMPTY
+sudo shutdown -h now

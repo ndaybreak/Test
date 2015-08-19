@@ -1,0 +1,23 @@
+<html ng-app>
+<head>
+<meta charset="utf-8">
+<title>实验</title>
+<script type="text/javascript" src="lib/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="lib/angular.js"></script>
+<script type="text/javascript" src="controller/index.js"></script>
+</head>
+<body>
+	<div ng-controller="aaa">
+		<div style="width: 100px; height: 100px; background-color: red;" ng-click="click()"></div>
+		<p>{{ w }} x {{ h }}</p>
+        <p>W: <input type="text" ng-model="w" /></p>
+        <p>H: <input type="text" ng-model="h" /></p>
+	</div>
+	
+	<script type="text/javascript">
+		
+		
+		/* angular.bootstrap(document.documentElement); */
+	</script>
+</body>
+</html>

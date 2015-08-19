@@ -1,0 +1,36 @@
+<div class="breadCrumbs_Div">
+	<ul class="breadcrumbs2">
+		<li style="margin-left:1px;" class="last-child">
+			<span class="carat">>&nbsp;</span>BU-Customer Exception</li>
+	</ul>
+</div>
+<section class="container left" style="width:100%;">
+	<div>
+		<table id="search_result" class="TableBackground search_result dataTables_wrapper"
+			pa-table="columnDefs" table-data="optBuCustExcpList" data-field="optBuCustExcpGridField" data-key="id">
+			<thead>
+				<tr class="TableHeaderRow">
+					<th class="center"><input type="checkbox" name="checkAllEdit"
+						id="checkAllEdit" title="Check All" /></th>
+					<th>Region</th>
+					<th>Sub Region 1</th>
+					<th>Sub Region 2</th>
+					<th>Sub Region 3</th>
+					<th>Country</th>
+					<th>Business Unit</th>
+					<th>MDCP Org ID</th>
+					<th>AMID2</th>
+					<th>Note</th>
+					<th>Updated By</th>
+					<th>Updated On</th>
+				</tr>
+			</thead>
+		</table>
+		<div class="editable-button-box">
+			<a class="btn btn-Primary btn-add {{btn}}" ng-click="add()"><i class="icon-plus"></i>Add New Record</a>
+			<a class="btn btn-Primary btn-delete {{btn}}" ng-click="del();"><i class="icon-trash"></i>Delete</a>
+			<a class="btn btn-Primary {{btn}}" ng-click="update()"><i class="icon-pencil icon-white"></i>Edit</a>
+		</div>
+		<a class="btn btn-Primary btn-export" ng-class="{'ui-state-disabled': data.length==0}" ng-click="data.length!=0 && exportAsExcel()"><i class="icon-download icon-white"></i>Export</a>
+	</div>
+</section>

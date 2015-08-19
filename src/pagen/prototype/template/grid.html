@@ -1,0 +1,26 @@
+<div class="breadCrumbs_Div">
+	<ul class="breadcrumbs2">
+		<li style="margin-left:1px;" class="last-child">
+			<span class="carat">>&nbsp;</span><%= xc.title %></li>
+	</ul>
+</div>
+<%= xc.container %>
+	<div>
+		<table id="search_result" class="TableBackground search_result dataTables_wrapper"
+			pa-table="columnDefs" table-data="<%= xc.table_data %>" data-field="<%= xc.data_field %>" data-key="<%= xc.data_key %>">
+			<thead>
+				<tr class="TableHeaderRow">
+					<th class="center"><input type="checkbox" name="checkAllEdit"
+						id="checkAllEdit" title="Check All" /></th>
+<% xc.columns.each do |c| -%>
+					<th><%= c.column_name %></th>
+<% end -%>
+				</tr>
+			</thead>
+		</table>
+		<div class="editable-button-box">
+<%= xc.buttons -%>
+		</div>
+		<a class="btn btn-Primary btn-export" ng-class="{'ui-state-disabled': data.length==0}" ng-click="data.length!=0 && exportAsExcel()"><i class="icon-download icon-white"></i>Export</a>
+	</div>
+</section>

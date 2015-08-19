@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	
+	<title>Optimus Statistics</title>
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/nv.d3.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-default hp-blue" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://www.hp.com"><img src="images/hp-logo-v3.gif" /></a>
+				<h1 class="navbar-text">Optimus Service Statistics</h1>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<h3>Select Date Range</h3>
+			<button id="change"> change </button>
+		</div>
+		<br>
+		
+		<div class="tab-content">
+			<div>
+				<div id="chart" class="chart">
+					<svg></svg>
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<footer>
+			<p class="pull-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>© 2014 Hewlett-Packard Development Company, L.P.</p>
+		</footer>
+	</div>
+	
+	<script src="lib/jquery-2.1.0.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/moment.min.js"></script>
+	<script src="lib/d3.js"></script>
+	<script src="lib/nv.d3.js"></script>
+	<script>
+		
+		var data1 = [{
+			key:'Median',
+			values:[
+			        {x:'ffff',y:'123'},
+			        {x:'aaaaa',y:'535'},
+			        {x:'sssssss',y:'767'},
+			        {x:'fdddddd',y:989},
+			        {x:'qqqq',y:657},
+			        {x:'wwww',y:876},
+			        {x:'eee',y:678},
+			        {x:'rrrr',y:768},
+			        {x:'uuuuuuuuuuuuuuuu',y:678},
+			        {x:'eeeeeeeeee',y:456},]
+		}
+		,{
+			key:'Mean',
+			values:[
+			        {x:'ffff',y:445},
+			        {x:'aaaaa',y:234},
+			        {x:'sssssss',y:443},
+			        {x:'fdddddd',y:565},
+			        {x:'qqqq',y:657},
+			        {x:'wwww',y:78},
+			        {x:'eee',y:465},
+			        {x:'rrrr',y:345},
+			        {x:'uuuuuuuuuuuuuuuu',y:455},
+			        {x:'eeeeeeeeee',y:345}]
+		}];
+		
+		var data2 = [{
+			key:'Median222',
+			values:[
+			        {x:'ffff',y:123},
+			        {x:'aaaaa',y:535},
+			        {x:'sssssss',y:767},
+			        {x:'fdddddd',y:989},
+			        {x:'qqqq',y:657},
+			        {x:'wwww',y:876},
+			        {x:'eee',y:678},
+			        {x:'rrrr',y:768},
+			        {x:'uuuuuuuuuuuuuuuu',y:11},
+			        {x:'eeeeeeeeee',y:11},]
+		}
+		,{
+			key:'Mean111',
+			values:[
+			        {x:'ffff',y:445},
+			        {x:'aaaaa',y:234},
+			        {x:'sssssss',y:443},
+			        {x:'fdddddd',y:565},
+			        {x:'qqqq',y:657},
+			        {x:'wwww',y:78},
+			        {x:'eee',y:465},
+			        {x:'rrrr',y:345},
+			        {x:'uuuuuuuuuuuuuuuu',y:11},
+			        {x:'eeeeeeeeee',y:11}]
+		}];
+		
+		nv.addGraph(function() {
+		    var chart = nv.models.multiBarChart();
+
+		    chart.xAxis
+		        .rotateLabels(-65)
+		        .axisLabelDistance(25)
+		        
+		        .axisLabel("Module Name")
+		        .tickFormat(function(d) {
+					return d;
+				});
+
+		    chart.yAxis
+		    	.axisLabel("Response Time")
+		    	.axisLabelDistance(25)
+		        .tickFormat(d3.format(',.1f'));
+		    
+		    chart.showControls(false)
+		    .groupSpacing(0.2)
+		    .transitionDuration(350)
+		    	.margin({bottom: 100}); 
+		    
+
+		    d3.select('#chart svg')
+		        .datum(data1)
+		        .call(chart)
+		        ;
+
+		    nv.utils.windowResize(chart.update);
+
+		    return chart;
+		});
+		
+		$('#change').click(function(){
+			$('#chart svg').html('');
+			nv.addGraph(function() {
+			    var chart = nv.models.multiBarChart();
+
+			    chart.xAxis
+			        .rotateLabels(-65)
+			        .axisLabelDistance(25)
+			        .axisLabel("Module Name")
+			        .tickFormat(function(d) {
+						return d;
+					});
+
+			    chart.yAxis
+			    	.axisLabel("Response Time")
+			    	.axisLabelDistance(25)
+			        .tickFormat(d3.format(',.1f'));
+			    
+			    chart.showControls(false)
+			    	.margin({bottom: 100}); 
+			    
+
+			    d3.select('#chart svg')
+			        .datum(data2)
+			        .call(chart)
+			        ;
+
+			    nv.utils.windowResize(chart.update);
+
+			    return chart;
+			});
+		});
+	</script>
+</body>
+</html>

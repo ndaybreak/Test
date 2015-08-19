@@ -1,0 +1,32 @@
+<style>
+	.dataTable{
+		border:1px solid
+	}
+	.dataTable th{
+		width: 10em;
+	}
+	.dataTable td,th{
+		border-left: 1px solid;
+	}
+	
+</style>
+<div>
+	<table class="dataTable" pa-scroll>
+		<thead>
+			<tr class="even TableHeaderRow ">
+				<th ng-repeat="header in headers">{{header}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="rowData in tableData track by $index">
+				<td ng-repeat="col in rowData track by $index">{{col}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="t_footer">
+		<div style="float:left;background: green;width:300px">
+			 <button>export</button>
+			 <button>export all</button>
+		</div>
+	</div>
+</div>

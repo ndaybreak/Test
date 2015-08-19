@@ -1,0 +1,30 @@
+<style>
+.expander {
+    border: 1px solid black;
+    width: 250px;
+}
+
+.expander>.title {
+    background-color: black;
+    color: white;
+    padding: .1em .3em;
+    cursor: pointer;
+}
+
+.expander>.body {
+    padding: .1em .3em;
+}
+</style>
+<hello></hello>
+gggg
+<hello1>
+    <br/>
+    <span>zzzzzz</span><br/>
+    <span>zzzzzzzz</span>
+</hello1>
+
+<div hello2>hello2</div>    
+<expander class="expander" expand-title="title">   
+	{{text}}
+</expander>
+<input ng-model="title">

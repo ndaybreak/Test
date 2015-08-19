@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<p>
+		<h4>浮动产生负作用  :</h4>
+		1、背景不能显示
+		2、边框不能撑开
+		
+		<h4>css解决浮动，清除浮动方法:</h4>
+		1、对父级设置适合CSS高度(前提是对象内容高度要能确定并能计算好。)
+		<br>
+		2.clear:both清除浮动
+		<p>在父级“</div>”结束前加此div引入“class="clear"”样式。这样即可清除浮动
+		这个css clear清除float产生浮动，可以不用对父级设置高度 也无需技术父级高度，方便适用，但会多加CSS和HTML标签。<p>
+		
+		3、父级div定义 overflow:hidden
+		<p>对父级CSS选择器加overflow:hidden样式，可以清除父级内使用float产生浮动。优点是可以很少CSS代码即可解决浮动产生。
+		为什么加入overflow:hidden即可清除浮动呢？那是因为overflow:hidden属性相当于是让父级紧贴内容，这样即可紧贴其对象内内容（包括使用float的div盒子），从而实现了清除浮动。
+		</p>
+	</p>
+	<div style="background:red; overflow:hidden">
+		<button style="float:right;">ddddd</button>
+		<!-- <div style="clear:both"></div> -->
+	</div>
+</body>
+</html>

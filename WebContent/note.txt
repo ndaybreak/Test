@@ -1,0 +1,2 @@
+app/  is for testing
+other directory is common

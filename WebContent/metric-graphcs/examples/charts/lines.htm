@@ -1,0 +1,46 @@
+
+
+<div class='row trunk-section'>
+	<div class='col-lg-7 text-center' id='singleton'></div>
+	<div class='col-lg-5'>
+
+		<pre>
+			<code class='javascript'>MG.data_graphic({
+    title: "Singleton",
+    description: "Handling a solitary data point.",
+    data: [{'date': new Date('2015-03-05T21:00:00Z'), 'value': 12000}],
+    width: 600,
+    height: 200,
+    right: 40,
+    target: '#singleton'
+});</code>
+		</pre>
+
+	</div>
+</div>
+
+
+<script>
+	
+
+	MG.data_graphic({
+		title : "Singleton",
+		description : "Handling a solitary data point.",
+		data : [ {
+			'date' : new Date('2015-03-05T21:00:00Z'),
+			'value' : 12000
+		},
+		{
+			'date' : new Date('2015-03-06T21:00:00Z'),
+			'value' : 18000
+		},
+		{
+			'date' : new Date('2015-03-07T21:00:00Z'),
+			'value' : 32000
+		} ],
+		width : 600,
+		height : 200,
+		right : 40,
+		target : '#singleton'
+	});
+</script>

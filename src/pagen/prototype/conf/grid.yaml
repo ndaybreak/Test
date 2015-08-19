@@ -1,0 +1,153 @@
+# ------------------------------------------------------------------------------
+--- !ruby/object:XConf
+entity_name: OptBuCustExcp
+title: BU-Customer Exception
+table_data: optBuCustExcpList
+data_field: optBuCustExcpGridField
+data_key: id
+action: optBuCustExcp
+#two_columns: false
+#show_scroll: false
+columns:
+- !ruby/object:XColumn
+  column_name: "Region"
+  grid_field: "rgnCdForDisplay"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Sub Region 1"
+  grid_field: "subregn1CdForDisplay"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Sub Region 2"
+  grid_field: "subregn2CdForDisplay"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Sub Region 3"
+  grid_field: "subregn3CdForDisplay"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Country"
+  grid_field: "cntryCdForDisplay"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Business Unit"
+  grid_field: "busUnitForDisplay"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "MDCP Org ID"
+  grid_field: "mdcpOrgId"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "AMID2"
+  grid_field: "amid2"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Note"
+  grid_field: "note"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Updated By"
+  grid_field: "lastModByEmail"
+#  width: 100
+#  left: false
+#  right: true
+- !ruby/object:XColumn
+  column_name: "Updated On"
+  grid_field: "lastModTs"
+#  width: 100
+#  left: false
+#  right: true
+
+
+# ------------------------------------------------------------------------------
+--- !ruby/object:XConf
+entity_name: OptCntryExcp
+title: Country Exception
+table_data: optCntryExcpList
+data_field: optCntryExcpGridField
+data_key: id
+action: optCntryExcp
+#two_columns: false
+#show_scroll: false
+columns:
+- !ruby/object:XColumn
+  column_name: "Region"
+  grid_field: "rgnCdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Sub Region 1"
+  grid_field: "subregn1CdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Sub Region 2"
+  grid_field: "subregn2CdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Sub Region 3"
+  grid_field: "subregn3CdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Country"
+  grid_field: "cntryCdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Note"
+  grid_field: "note"
+- !ruby/object:XColumn
+  column_name: "Updated By"
+  grid_field: "lastModByEmail"
+- !ruby/object:XColumn
+  column_name: "Updated On"
+  grid_field: "lastModTs"
+
+# ------------------------------------------------------------------------------
+--- !ruby/object:XConf
+entity_name: OptCurrExcp
+title: Currency Exception
+table_data: optCurrExcpList
+data_field: optCurrExcpGridField
+data_key: id
+action: optCurrExcp
+#two_columns: false
+#show_scroll: false
+columns:
+- !ruby/object:XColumn
+  column_name: "Region"
+  grid_field: "rgnCdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Sub Region 1"
+  grid_field: "subregn1CdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Sub Region 2"
+  grid_field: "subregn2CdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Sub Region 3"
+  grid_field: "subregn3CdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Country"
+  grid_field: "cntryCdForDisplay"
+- !ruby/object:XColumn
+  column_name: "Currency"
+  grid_field: "currCd"
+- !ruby/object:XColumn
+  column_name: "Note"
+  grid_field: "note"
+- !ruby/object:XColumn
+  column_name: "Updated By"
+  grid_field: "lastModByEmail"
+- !ruby/object:XColumn
+  column_name: "Updated On"
+  grid_field: "lastModTs"

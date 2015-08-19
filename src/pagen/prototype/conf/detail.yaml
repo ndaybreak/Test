@@ -1,0 +1,94 @@
+--- !ruby/object:XDetail
+entity_name: OptBuCustExcp
+screen_name: BU-Customer Exception
+items:
+- !ruby/object:XDetailItem
+  internal_id:        1
+  service_name:       getCountries
+  return_value:       countries
+  default_index:      0
+  data_source:        admin
+  control_type:       dropdown
+  key:                cd
+  item_name:          country
+  item_value:         cntryCd
+  item_desc:          Country
+  desc_for_message:   Country
+  html_element_id:    elCountry
+  html_element_name:  elCountry
+  checks:             nil
+  on_check_fail:
+  mandatory:          true
+  side:
+- !ruby/object:XDetailItem
+  internal_id:        2
+  service_name:       getBusinessUnits
+  return_value:       businessUnits
+  default_index:      0
+  data_source:        admin
+  control_type:       dropdown
+  key:                cd
+  item_name:          bunit
+  item_value:         busUnit
+  item_desc:          Business Unit
+  desc_for_message:   Business Unit
+  html_element_id:    elBunit
+  html_element_name:  elBunit
+  checks:             nil
+  on_check_fail:
+  mandatory:          true
+  side:
+- !ruby/object:XDetailItem
+  internal_id:        3
+  service_name:
+  return_value:
+  default_index:
+  data_source:
+  control_type:       text2
+  key:
+  item_name:          mdcpOrgId
+  item_value:
+  item_desc:          MDCP Org ID
+  desc_for_message:   MDCP Org ID
+  html_element_id:    elMdcpOrgId
+  html_element_name:  elMdcpOrgId
+  checks:             ['notNull','max32','digital']
+  on_check_fail:      MDCP Org ID is required.;Max length of MDCP Org ID is 32.;MDCP Org ID should be numeric.
+  mandatory:          true
+  side:
+- !ruby/object:XDetailItem
+  internal_id:        4
+  service_name:
+  return_value:
+  default_index:
+  data_source:
+  control_type:       text
+  key:
+  item_name:          amid2
+  item_value:
+  item_desc:          AMID2 *
+  desc_for_message:   AMID2
+  html_element_id:    elAmid2
+  html_element_name:  elAmid2
+  checks:             ['notNull','max15']
+  on_check_fail:      Please input a valid AMID2 or an asterisk.;Max length of AMID2 is 15.
+  mandatory:          false
+  side:
+- !ruby/object:XDetailItem
+  internal_id:        5
+  service_name:
+  return_value:
+  default_index:
+  data_source:
+  control_type:       textarea
+  key:
+  item_name:          note
+  item_value:
+  item_desc:          Note
+  desc_for_message:   Note
+  html_element_id:    elNote
+  html_element_name:  elNote
+  checks:             ['max256orNull']
+  on_check_fail:      Max length of Note is 256.
+  mandatory:          false
+  side:

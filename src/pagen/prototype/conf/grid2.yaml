@@ -1,0 +1,107 @@
+# ------------------------------------------------------------------------------
+--- !ruby/object:XGrid
+entity_name: OptBuCustExcp
+title: BU-Customer Exception
+table_data: optBuCustExcpList
+data_field: optBuCustExcpGridField
+data_key: id
+action: optBuCustExcp
+#two_columns: false
+#show_scroll: false
+columns:
+  - Region
+  - Sub Region 1
+  - Sub Region 2
+  - Sub Region 3
+  - Country
+  - Business Unit
+  - MDCP Org ID
+  - AMID2
+  - Note
+  - Updated By
+  - Updated On
+fields:
+  - rgnCdForDisplay
+  - subregn1CdForDisplay
+  - subregn2CdForDisplay
+  - subregn3CdForDisplay
+  - cntryCdForDisplay
+  - busUnitForDisplay
+  - mdcpOrgId
+  - amid2
+  - note
+  - lastModByEmail
+  - lastModTs
+field_width:
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+left_targets: "1,2,3,4,5,6,7,8,9,10,11"
+right_targets: "0"
+
+# ------------------------------------------------------------------------------
+--- !ruby/object:XGrid
+entity_name: OptCntryExcp
+title: Country Exception
+table_data: optCntryExcpList
+data_field: optCntryExcpGridField
+data_key: id
+action: optCntryExcp
+#two_columns: false
+#show_scroll: false
+
+
+columns:
+  - Region
+  - Sub Region 1
+  - Sub Region 2
+  - Sub Region 3
+  - Country
+  - Note
+  - Updated By
+  - Updated On
+fields:
+  - regionForDisplay
+  - subRegion1ForDisplay
+  - subRegion2ForDisplay
+  - subRegion3ForDisplay
+  - cntryCdForDisplay
+  - note
+  - lastModByEmail
+  - lastModTs
+field_width:
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+left_targets: "1,2,3,4,5,6,7,8"
+right_targets: "0"
+
+
+# ------------------------------------------------------------------------------
+--- !ruby/object:XGrid
+entity_name: OptCurrExcp
+title: Currency Exception
+table_data: optCurrExcpList
+data_field: optCurrExcpGridField
+data_key: id
+action: optCurrExcp
+#two_columns: false
+#show_scroll: false
+columns: ["Region", "Sub Region 1", "Sub Region 2", "Sub Region 3", "Country", "Currency", "Note", "Updated By", "Updated On"]
+fields: ["regionForDisplay", "subRegion1ForDisplay", "subRegion2ForDisplay", "subRegion3ForDisplay", "cntryCdForDisplay", "currCd", "note", "lastModByEmail", "lastModTs"]
+field_width: [100, 100, 100, 100, 100, 100, 100, 100, 100]
+left_targets: "1,2,3,4,5,6,7,8,9"
+right_targets: "0"
