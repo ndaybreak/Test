@@ -1,5 +1,5 @@
 # ---------------------------
-# 1. system
+# 1. system  
 # ---------------------------
 echo 'export http_proxy=http://web-proxy.cup.hp.com:8080'  >  ~/.hpproxy
 echo 'export https_proxy=http://web-proxy.cup.hp.com:8080' >> ~/.hpproxy
