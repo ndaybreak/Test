@@ -17,6 +17,8 @@ public class Test extends Person{
 			String age = "xxx";
 			System.out.println(age);
 		}
+
+		System.out.println(name + '4');
 	}
 	
 }
