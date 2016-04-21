@@ -20,6 +20,7 @@ public class Test2 {
 	public static void show(String name){
 		name = "ming";
 		String sex = "male";
+		String age = "28";
 		System.out.println(name);
 	}
 	public static void getHeader(){
