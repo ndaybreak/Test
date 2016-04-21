@@ -18,7 +18,7 @@ public class Test extends Person{
 			System.out.println(age);
 		}
 
-		System.out.println(name + '4');
+		System.out.println(name + '5');
 	}
 	
 }
