@@ -1,0 +1,32 @@
+ <div class="top-content">
+                <div class="order-status-wrap row">
+                    <div class="status-name">待受理</div>
+                    <div class="order-count"><h3>4</h3></div>
+                </div>
+            </div>
+
+
+            .row:after{
+    content: '';
+    display: inline-block;
+}
+#containers-wrap {
+    width: 600px;
+    height:400px;
+}
+
+.order-status-wrap,
+.status-name,
+.order-count {
+    display: inline-block;
+}
+
+.status-name {
+    width: 90px;
+    height: 90px;
+    background-color: rgba(0, 192, 239, 1);
+}
+.order-count {
+    width: 140px;
+    height: 90px;
+}
