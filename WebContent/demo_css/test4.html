@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>两端对齐</title>
+  <meta http-equiv="charset" content="utf-8">
+  <style type="text/css">
+    .step{
+      width: 400px;
+      height: 20px;
+      margin: 20px auto 0;
+      /*重点*/
+      text-align: justify;
+    }
+    .step i{
+      border-radius: 100%;
+      font-style: normal;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: black;
+      color: #fff;
+      text-align: center;
+      line-height: 20px;    
+    }
+    .step:after{
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: -24px;
+      z-index: -1;
+      height: 2px;
+      /*重点*/
+      width: 100%;
+      background: #000;
+    }
+    .test{
+      width: 400px;
+      margin: 0 auto;
+      height: 20px;
+      line-height: 20px;
+      text-align: justify;
+    }
+    .test:after{
+      content: '';
+      width: 100%;
+      display: inline-block;
+    }
+    .test div{
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="step">
+    <i>1</i>
+    <i>2</i>
+    <i>3</i>
+    <i>4</i>
+    <i>5</i>
+    <i>6</i>
+    <i>7</i>
+    <i>8</i>
+  </div>
+  <div class="test">
+    <div>
+      <h1>test1</h1>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+    <div>
+      <h1>test2</h1>
+      <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+        <li>44</li>
+        <li>55</li>
+      </ul>
+    </div>
+    <div>
+      <h1>test3</h1>
+      <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

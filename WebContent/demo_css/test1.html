@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>页面布局</title>
+  <meta http-equiv="charset" content="utf-8">
+  <style type="text/css">
+    html,
+    body{
+      height: 100%;
+      padding:0;
+      margin:0;
+    }
+    
+    .header {
+      height: 50px;
+      background: red;
+    }
+
+    .content {
+      box-sizing: border-box;
+      height: 100%;
+      position: relative;
+      margin-top: -50px;
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
+
+    .content:after {
+      content: '';
+      width: 13px;
+      top: 50px;
+      bottom: 30px;
+      left: 250px;
+      border-left: 1px solid red;
+      border-right: 1px solid red;
+      position: absolute;
+    }
+
+    .footer {
+      height: 30px;
+      margin-top: -30px;
+      background-color: gray;
+    }
+
+    .row:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .left {
+      float: left;
+      width: 250px;
+      height: 100%;
+      overflow: auto;
+      /*background-color: #f3f3f3;*/
+    }
+
+    .right {
+      height: 100%;
+      overflow: auto;    
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">1</div>
+  <div class="content ">
+    <div class="left">
+      <div style="padding: 20px">2222222</div>
+      <div style="padding: 20px">2222222</div>
+      <div style="padding: 20px">2222222</div>
+      <div style="padding: 20px">2222222</div>
+      
+    </div>
+    <div class="right">
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+      <div style="padding: 50px">333333333333333333</div>
+    </div>
+  </div>
+  <div class="footer">4</div>
+
+</body>
+</html>
