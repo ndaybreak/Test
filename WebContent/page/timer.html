@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Timer</title>
+	
+</head>
+<body>
+	<div>
+		<div id="test1"></div>
+		<div id="test2"></div>
+		<div id="test3"></div>
+	</div>
+	<script>
+		function bindTimer(eleId, createDate, expiredHours) {
+			var createTime = createDate.getTime(),
+				totalTime = expiredHours*60*60*1000
+
+
+			var id = setInterval(function() {
+				var hours,
+					minutes,
+					seconds,
+					date = new Date(),
+					time = date.getTime()
+					dValue = time - createTime,
+					SurplusTime = totalTime - dValue
+					
+
+				if(SurplusTime < 0) {
+					console.log('timeout')
+					clearInterval(id)
+					return
+				}
+
+				hours = Math.floor(SurplusTime /1000/60/60)
+				minutes = Math.floor((SurplusTime - hours*60*60*1000)/1000/60)
+				seconds = Math.floor((SurplusTime - hours*60*60*1000 - minutes*60*1000)/1000)
+
+				if(String(hours).length === 1) {
+					hours = '0' + hours
+				}
+				if(String(minutes).length === 1) {
+					minutes = '0' + minutes
+				}
+				if(String(seconds).length === 1) {
+					seconds = '0' + seconds
+				}
+
+				document.getElementById(eleId).innerHTML = hours + ' : ' + minutes + ' : ' + seconds 
+
+			}, 100)
+		}
+
+		var date = new Date()
+
+		bindTimer('test1', date, 3)
+
+		date.setHours(date.getHours() - 1)
+		bindTimer('test2', date, 3)
+
+		date.setMinutes(date.getMinutes() - 60)
+		date.setSeconds(date.getSeconds() - 38)
+		bindTimer('test3', date, 3)
+
+		
+	</script>
+</body>
+</html>
