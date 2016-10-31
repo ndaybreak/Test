@@ -3,3 +3,5 @@ other directory is common
 
 test1
 
+
+test2
