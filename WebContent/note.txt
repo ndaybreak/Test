@@ -1,5 +1,3 @@
 app/  is for testing
 other directory is common
 
-2test
-test1
