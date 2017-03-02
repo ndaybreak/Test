@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .xiao-tip {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            display: none;
+            color: white;
+            text-align: center;
+            line-height: 45px;
+            border-radius: 2px;
+            background-color: green;
+        }
+        .fade {
+            opacity: 0;
+            transform: translate(0,-50%); 
+            -webkit-transition: opacity 1s ease-in-out;
+            -o-transition: opacity 1s ease-in-out;
+            transition: all 1s ease-in-out;
+        }
+        .in {
+            opacity: 1;
+            transform: translate(0,0);
+        }
+    </style>
+</head>
+<body>
+    <div id="xiao-tip" class="xiao-tip fade">操作成功</div>
+    <button id="showBtn">
+        show
+    </button>
+    <script>
+        var showBtn = document.getElementById('showBtn')
+        showBtn.addEventListener('click', function() {
+            var tip = document.getElementById('xiao-tip')
+            tip.style.display = 'block'
+            setTimeout(function() {
+                tip.classList.add('in')
+                setTimeout(function() {
+                    tip.classList.remove('in')
+                    setTimeout(function() {
+                        tip.style.display = 'none'                
+                    }, 1000)                    
+                }, 1500)
+            }, 0)
+        })
+
+    </script>
+</body>
+</html>
