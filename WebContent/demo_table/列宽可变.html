@@ -3,23 +3,52 @@
 <head>
 	<meta charset="UTF-8">
 	<title>列宽可变</title>
+	<style>
+		body {
+			margin: 0;
+		}
+	</style>
 </head>
 <body>
 	<table id="tbl" cellspacing="1" cellpadding="5" bgcolor=#660000>
-	    <tr>
-	    	<td nowrap bgcolor=#bbbbbb style="white-space:nowrap;width:100px">标题一</td>
-	    	<td nowrap bgcolor=#bbbbbb style="white-space:nowrap;;width:100px">标题二</td>
-	    	<td  nowrap bgcolor=#bbbbbb style="width:100px" >标题三</td>
-	    	<td nowrap bgcolor=#bbbbbb style="width:100px" >标题四</td>
-	    </tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
-	    <tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr>
+			<td nowrap bgcolor=#bbbbbb style="white-space:nowrap;width:100px">标题一</td>
+			<td nowrap bgcolor=#bbbbbb style="white-space:nowrap;;width:100px">标题二</td>
+			<td  nowrap bgcolor=#bbbbbb style="width:100px" >标题三</td>
+			<td nowrap bgcolor=#bbbbbb style="width:100px" >标题四</td>
+		</tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
+		<tr><td bgcolor=#ffffff>内容A</td><td bgcolor=#ffffff>内容B</td><td bgcolor=#ffffff>内容C</td><td bgcolor=#ffffff>内容D</td></tr>
 	</table>
+
+	<table id="tb2">
+		<thead>
+			<tr>
+				<th>ssss</th>
+				<th>uuuuu</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>aaaa</td>
+				<td>bbbbbb</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<input id="testBtn" type="button" value="show" style="" />
+	<script>
+		var btn = document.getElementById('testBtn')
+		btn.addEventListener('click', function(e) {
+			console.log(e)
+		})
+
+	</script>
 
 	<script language="javascript">
 		var headerTds = document.getElementById("tbl").rows[0].cells;
@@ -31,54 +60,55 @@
 		var headerWidth = 0;
 		var tblObj = document.getElementById("tbl");
 		for(var i = 0;i<headerTds.length;i++){
-		    addListener(headerTds[i],"mousedown",onmousedown);
-		    addListener(headerTds[i],"mousemove",onmousemove);
+			addListener(headerTds[i],"mousedown",onmousedown);
+			addListener(headerTds[i],"mousemove",onmousemove);
 		}
 		function onmousedown(event){
-		    if (resizeable == true){
-		        var evt =event||window.event;
-		        mousedown = true;
-		        screenXStart = evt.screenX;
-		        tdWidth = targetTd.offsetWidth;
-		        headerWidth = tblObj.offsetWidth;
-		    }
+			if (resizeable == true){
+				var evt =event||window.event;
+				mousedown = true;
+				screenXStart = evt.screenX;
+				tdWidth = targetTd.offsetWidth;
+				headerWidth = tblObj.offsetWidth;
+			}
 		}
 		function onmousemove(event){
-		    var evt =event||window.event;
-		    var srcObj = getTarget(evt);
+			console.log('move')
+			var evt =event||window.event;
+			var srcObj = getTarget(evt);
 		    var offsetX = evt.offsetX || (evt.clientX - srcObj.getBoundingClientRect().left);//这个比较关键，解决了Firefox无offsetX属性的问题
 		    if (mousedown == true){
 		        var width = (tdWidth + (evt.screenX - screenXStart)) + "px";//计算后的新的宽度
 		        targetTd.style.width = width;
 		        tblObj.style.width = (headerWidth + (evt.screenX - screenXStart)) + "px";
 		    }else{
-		        var trObj = tblObj.rows[0];
+		    	var trObj = tblObj.rows[0];
 		        if(srcObj.offsetWidth - offsetX <=4){//实际改变本单元格列宽
-		            targetTd=srcObj;
-		            resizeable = true;
+		        	targetTd=srcObj;
+		        	resizeable = true;
 		            srcObj.style.cursor='col-resize';//修改光标样式
 		        }else if(offsetX <=4 && srcObj.cellIndex > 0){//实际改变前一单元格列宽，但是表格左边框线不可拖动
-		            targetTd=trObj.cells[srcObj.cellIndex - 1];
-		            resizeable = true;
-		            srcObj.style.cursor='col-resize';
+		        	targetTd=trObj.cells[srcObj.cellIndex - 1];
+		        	resizeable = true;
+		        	srcObj.style.cursor='col-resize';
 		        }else{
-		            resizeable = false;
-		            srcObj.style.cursor='default';
+		        	resizeable = false;
+		        	srcObj.style.cursor='default';
 		        }
 		    }
 		}
 		document.onmouseup = function(event){
-		    tartgetTd = null;
-		    resizeable = false;
-		    mousedown = false;
-		    document.body.style.cursor='default';
+			tartgetTd = null;
+			resizeable = false;
+			mousedown = false;
+			document.body.style.cursor='default';
 		}
 		function getTarget(evt){
-		    return evt.target || evt.srcElement;
+			return evt.target || evt.srcElement;
 		}
 		function addListener(element,type,listener,useCapture){
-		    element.addEventListener?element.addEventListener(type,listener,useCapture):element.attachEvent("on" + type,listener);
+			element.addEventListener?element.addEventListener(type,listener,useCapture):element.attachEvent("on" + type,listener);
 		}
-		</script>
+	</script>
 </body>
 </html>
