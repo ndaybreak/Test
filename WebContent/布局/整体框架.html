@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body {
+			height: 100%;
+		}
+		.row:after {
+			content: '';
+			clear: both;
+		}
+		.header {
+			height: 50px;
+			background-color: #000;
+		}
+		.wrap {
+			height: 100%;
+			margin-top: -50px;
+			padding-top: 50px;
+		}
+		.content {
+			position: relative;
+			min-height: 100%;
+			padding-bottom: 30px;
+			background-color: snow;
+		}
+		.footer {
+			position: relative;
+			height: 30px;
+			margin-top: -30px;
+			background-color: gray;
+		}
+		.menu {
+			position: absolute;
+			width: 150px;
+			top: 0;
+			bottom: 30px;
+			background-color: blue;
+			overflow: auto;
+		}
+		.container {
+			padding-left: 150px;
+		}
+
+		li {
+			line-height: 50px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="wrap">
+		<div class="content row">
+			<div class="menu">
+				<ul>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+					<li>menu</li>
+				</ul>
+			</div>
+			<div class="container">
+				<h1>ssss</h1>
+				<h1>ssss</h1>
+				<h1>ssss</h1>
+				<h1>ssss</h1>
+				<h1>ssss</h1>
+				<h1>ssss</h1>
+			</div>
+		</div>
+		<div class="footer">
+			fffffffffff
+		</div>
+	</div>
+</body>
+</html>
